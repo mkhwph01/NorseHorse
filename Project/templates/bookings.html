@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<div class="portfolio-container">
+	        <div class="container">
+	            <div class="row">
+	            	<div class="col-sm-12 portfolio-filters wow fadeInLeft">
+	            		<a href="#" class="filter-all active">All</a> / 
+	            		<a href="#" class="filter-requests">Requests</a> / 
+	            		<a href="#" class="filter-offers">Offers</a> 
+	            	</div>
+	            
+
+</div>
+</div>
+
+<div class="container active">
+  <div class="requests">
+   <div class="col-sm-12 pricing-1-title wow fadeIn">
+        <h2>Requests</h2>
+	</div>
+	<div>
+		<a href="/map" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-pushpin"></span> View Map of Ride</a>
+	</div>
+
+		 <h3>My Accepted Requests I Posted</h3>
+			<table class="table table-hover table-responsive table-bordered">
+			   <thead class="thead-inverse thead-default">
+				<tr class="pricing-1-box pricing-1-box-best ">
+					<td><b><h4>Pick Up Point</h4></b></td>
+					<td><b><h4>Destination</h4></b></td>
+					<td><b><h4>Date</h4></b></td>
+					<td><b><h4>Time</h4></b></td>
+					<td><b><h4>Driver's Name</h4></b></td>
+					<td><b><h4>Email</h4></b></td>
+					<td><b><h4>Mobile</h4></b></td>
+					<td colspan="2"><b><h4>Action</h4></b></td>
+				</tr>
+
+				</thead>
+				{% for post in my_accepted_requests %}
+					<tr>
+						<td>{{ post.pickup }}</td>
+						<td>{{ post.location }}</td>
+						<td>{{ post.ride_date }}</td>
+						<td>{{ post.time }}</td>
+						{% for user in contacts %}
+							{% if user.id == post.id_Acceptor %}
+						<td>{{ user.name }}
+						</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.phone_number }}</td>
+							{% endif %}
+						{% endfor %}
+						<td>
+							<form method="POST" action="/rate_driver/{{ post.id }}">
+								<a type="submit" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-star-empty"></span> Rate</a>
+						   </form>
+					    </td>
+				    	 <td>
+							<form method="POST" action="/delete_request/{{ post.id }}">
+								<a href="#" onclick="$(this).closest('form').submit()" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+	
+
+	<h3>Other Users Requests I Accepted</h3>
+	<table class="table table-hover table-responsive table-bordered">
+		<thead class="thead-inverse thead-default">
+			<tr class="pricing-1-box pricing-1-box-best ">
+				<td><b><h4>Pick Up Point</h4></b></td>
+				<td><b><h4>Destination</h4></b></td>
+				<td><b><h4>Date</h4></b></td>
+				<td><b><h4>Time</h4></b></td>
+				<td><b><h4>Passenger's Name</h4></b></td>
+				<td><b><h4>Email</h4></b></td>
+				<td><b><h4>Mobile</h4></b></td>
+				<td colspan="2"><b><h4>Action</h4></b></td>
+			</tr>
+		</thead>
+
+		{% for post in requests_I_accepted %}
+			<tr>
+				<td>{{ post.pickup }}</td>
+				<td>{{ post.location }}</td>
+				<td>{{ post.ride_date }}</td>
+				<td>{{ post.time }}</td>
+				{% for user in contacts %}
+					{% if post.from_user == user.username %}
+				<td>{{ user.name }}</td>
+				<td>{{ user.email }}</td>
+				<td>{{ user.phone_number }}</td>
+						{% else %}
+					{% endif %}
+				{% endfor %}
+				<td>
+					<form method="POST" action="/view_rating">
+						<a type="submit" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-star-empty"></span> View Rating</a>
+				   </form>
+			    </td>
+			    <td>
+					<form method="POST" action="/delete_request/{{ post.id }}">
+						<a href="#" onclick="$(this).closest('form').submit()" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Complete</a>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+  </div>	
+</div>
+
+
+<div class="container">
+  <div class="offers">
+	<div class="col-sm-12 pricing-1-title wow fadeIn">
+        <h2>Offers</h2>
+    </div>
+    <div>
+		<a href="/map" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-pushpin"></span> View Map of Ride</a>
+	</div>
+
+    <div class="container">
+		<h3>My Accepted Offers I Posted</h3>
+			<table class="table table-hover table-responsive table-bordered">
+				<thead class="thead-inverse thead-default">
+					<tr class="pricing-1-box pricing-1-box-best ">
+						<td><b><h4>Pick Up Point</h4></b></td>
+						<td><b><h4>Destination</h4></b></td>
+						<td><b><h4>Date</h4></b></td>
+						<td><b><h4>Time</h4></b></td>
+						<td><b><h4>Seats</h4></b></td>
+						<td><b><h4>Passenger's Name</h4></b></th></td>
+						<td><b><h4>Email</h4></b></td>
+						<td><b><h4>Mobile</h4></b></td>
+						<td><b><h4>Action</h4></b></td>
+					</tr>
+				</thead>
+
+					{% for post in my_accepted_offers %}
+					<tr>
+						<td>{{ post.pickup }}</td>
+						<td>{{ post.location }}</td>
+						<td>{{ post.ride_date }}</td>
+						<td>{{ post.time }}</td>
+						<td>{{ post.num_passengers}}</td>
+						{% for user in contacts %}
+						    {% if user.id == post.id_Acceptor %}
+						<td>{{ user.name }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.phone_number }}</td>
+							{% else %}
+							{% endif %}
+						{% endfor %}
+						<td>
+						<form method="POST" action="/delete_request/{{ post.id }}">
+							<a href="#" onclick="$(this).closest('form').submit()" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Complete</a>
+					</form>
+				</td>
+					</tr>
+				{% endfor %}
+			</table>
+
+
+    <h3>Other Users Offers I Accepted</h3>
+		<table class="table table-hover table-responsive table-bordered">
+			<thead class="thead-inverse thead-default">
+				<tr class="pricing-1-box pricing-1-box-best ">
+					<td><b><h4>Pick Up Point</h4></b></td>
+					<td><b><h4>Destination</h4></b></td>
+					<td><b><h4>Date</h4></b></td>
+					<td><b><h4>Time</h4></b></td>
+					<td><b><h4>Seats</h4></b></td>
+					<td><b><h4>Driver's Name</h4></b></td>
+					<td><b><h4>Email</h4></b></td>
+					<td><b><h4>Mobile</h4></b></td>
+				</tr>
+			</thead>
+				{% for post in offers_I_accepted %}
+				<tr>
+					<td>{{ post.pickup }}</td>
+					<td>{{ post.location }}</td>
+					<td>{{ post.ride_date }}</td>
+					<td>{{ post.time }}</td>
+					<td>{{ post.num_passengers}}</td>
+					{% for user in contacts %}
+					    {% if post.from_user == user.username %}
+					<td>{{ user.name }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.phone_number }}</td>
+						{% else %}
+						{% endif %}
+					{% endfor %}
+	<!-- 				<td>
+						<form method="POST" action="/delete_offer/{{ post.id }}">
+						<button type="submit" class="btn btn-success">Accept</button>
+					</form>
+					</td> -->
+				</tr>
+
+			{% endfor %}
+		</table>
+	</div>
+  </div>
+ </div>
+</div>
+</div>
+	{% include "footer.html" %}
+
+{% endblock %}

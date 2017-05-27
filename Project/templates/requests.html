@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body ng-app="getLostApp" ng-cloak>
+
+        
+        <!-- Page Title -->
+        <div class="page-title-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 wow fadeIn">
+                        <i class="fa fa-location-arrow"></i>
+                        <h1>Requests /</h1>
+                        <p>Here is where you can request a ride</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Request a ride -->
+        <div class="contact-us-container">
+        	<div class="container">
+	                <div class="col-sm-6 request-form wow fadeInLeft">
+	                    <p>
+	                    	NorseHorse's main goal is to help solve Luther's transportation need. Below you can fill in a form indicating your request. Also below you can find a link to view <a href="/view_requests">available</a> rides to key cities and airports. 
+	                    	
+	                    </p>
+
+	                    <form role="form" action="/post_request" method="POST">
+	                    	<div class="form-group">
+                                   <label for="username">Origin</label>
+                                   <div class="cols-sm-10">
+                                    <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                   <select type="text" name="pickUp" id="pickUp" class="form-control" ng-model="" required />
+                                    <option value="" disabled selected>Select Pick Up Point</option>
+                                    <option>Minneapolis, MN</option>
+                                    <option>Chicago, IL</option>
+                                    <option>Madison, MN</option>
+                                    <option>Des Moines, IA</option>
+                                    <option>Walmart, Decorah, IA</option>
+                                   </select>
+                                </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                                   <label for="username">Destination</label>
+                                   <div class="cols-sm-10">
+                                    <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                   <select type="text" name="dropOff" id="dropOff" class="form-control" ng-model="" required />
+                                    <option value="" disabled selected>Select Drop Off Point</option>
+                                    <option>Minneapolis, MN</option>
+                                    <option>Chicago, IL</option>
+                                    <option>Madison, MN</option>
+                                    <option>Des Moines, IA</option>
+                                    <option>Walmart, Decorah, IA</option>
+                                   </select>
+                                </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="lastname">Date</label>
+                               <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        <input type="date" name="date" id="date" placeholder="" class="form-control" ng-model="info.departuredate" required />
+                                </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="lastname">Time</label>
+                               <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                        <input type="time" name="time" id="time" class="form-control" ng-model="example.value" placeholder="HH:mm:ss" required />
+                                </div>
+                             </div>
+                           </div>
+                                         
+	                         
+	                        <button type="submit" class="btn">Submit</button>
+	                    </form>
+
+	                </div>
+
+
+	                <div class="col-sm-5 contact-address wow fadeInUp">
+	                    <h3>Let us offer you a ride</h3>
+	                    <img src="static/img/slider/boys.jpg">
+	                </div>
+	            </div>
+	        </div>
+        </div>
+
+        <!-- Call To Action -->
+        <div class="call-to-action-container">
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-12 call-to-action-text wow fadeInLeftBig">
+                      <p>
+                        Click on this button to view and/or <span class="violet">accept</span> ride requests posted by other users. Help a friend... Earn a little.
+                      </p>
+                      <div class="call-to-action-button">
+                          <a class="big-link-3" href="/view_requests">View Rides!</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <script src="static/js/app.js"></script>
+
+</body>     
+
+    {% include "footer.html" %}
+
+{% endblock %}   

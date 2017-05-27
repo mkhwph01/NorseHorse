@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NorseHorse - Luther College rideshare program</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
+        <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="static/css/animate.css">
+        <link rel="stylesheet" href="static/css/magnific-popup.css">
+        <link rel="stylesheet" href="static/flexslider/flexslider.css">
+        <link rel="stylesheet" href="static/css/form-elements.css">
+        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="static/css/media-queries.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="static/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="static/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+        
+   		 
+        <!-- Top menu -->
+		<nav class="navbar" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">NorseHorse - a super cool rideshare app...</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						{% if current_user.is_authenticated %}
+						<li>
+							<a href="/"><i class="fa fa-home"></i><br>Home</a>
+						</li>
+						<li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-table"></i><br>Bookings <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-left" role="menu">
+								<li class="active"><a href="/ride_request">Requests</a></li>
+								<li><a href="/ride_offer">Offers</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="/services"><i class="fa fa-tasks"></i><br>Services</a>
+						</li>
+						<li>
+							<a href="/about"><i class="fa fa-automobile"></i><br>About</a>
+						</li>
+						<li>
+							<a href="/my_profile"><i class="fa fa-user"></i><br>Profile</a>
+						</li>
+						<li>
+							<a href="https://m.me/686192314898711"><i class="fa fa-facebook"></i><br>Contact Us</a>
+						</li>
+						<li>
+							<a href="mailto:LC.norseHorse@gmail.com"><i class="fa fa-envelope"></i><br>Contact Us</a> 
+						</li>
+						<li>
+							<a href="/logout"><i class="fa fa-sign-out"></i><br>Logout</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="/"><i class="fa fa-home"></i><br>Home</a>
+						</li>
+						<li>
+							<a href="/services"><i class="fa fa-tasks"></i><br>Services</a>
+						</li>
+
+						<li>
+							<a href="/about"><i class="fa fa-automobile"></i><br>About</a>
+						</li>
+						<li>
+							<a href="/bookings"><i class="fa fa-camera"></i><br>Portfolio</a>
+						</li>
+						<li>
+							<a href="https://m.me/686192314898711"><i class="fa fa-facebook"></i><br>Contact Us</a>
+						</li>
+						<li>
+							<a href="mailto:LC.norseHorse@gmail.com"><i class="fa fa-envelope"></i><br>Contact Us</a> 
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-users"></i><br>Join Us <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="/display_registration">Register</a></li>
+								<li><a href="/display_login">Login</a></li>
+							</ul>
+						</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+
+
+
+		{% block content %}{% endblock %}
+        <!-- Javascript -->
+        <script src="static/js/jquery-1.11.1.min.js"></script>
+        <script src="static/bootstrap/js/bootstrap.min.js"></script>
+        <script src="static/js/bootstrap-hover-dropdown.min.js"></script>
+        <script src="static/js/jquery.backstretch.min.js"></script>
+        <script src="static/js/wow.min.js"></script>
+        <script src="static/js/retina-1.1.0.min.js"></script>
+        <script src="static/js/jquery.magnific-popup.min.js"></script>
+        <script src="static/flexslider/jquery.flexslider-min.js"></script>
+        <script src="static/js/jflickrfeed.min.js"></script>
+        <script src="static/js/masonry.pkgd.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script src="static/js/jquery.ui.map.min.js"></script>
+        <script src="static/js/scripts.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <head>
+      <script src="{{ url_for('static', filename='login.js') }}"></script>
+    </head>
+
+    <body>
+        <!-- Page Title -->
+        <div class="page-title-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 wow fadeIn">
+                        <i class="fa fa-pencil"></i>
+                        <h1>Register /</h1>
+                        <p>Here is how you can sign on to our program</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="contact-us-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-7 wow fadeInLeft">
+                        <p>
+                            Our rideshare program makes it easy for you to organize your ride schedules. 
+                            Sign up below and let us connect you to a driver or a rider. Contact us <a href="/contact">here</a> if you have any question. 
+                        </p>
+                        <form name="form" ng-submit="vm.register()" role="form" action="/register" method="POST">
+                            <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+                               <label for="username">First Name</label>
+                               <div class="cols-sm-10">
+                                <div class="input-group">
+                               <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                               <input type="text" name="firstName" id="firstName" placeholder="Your First Name" class="form-control" ng-model="vm.user.firstName" required />
+                               <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block"></span>
+                               </div>
+                              </div>
+                            </div> 
+                            <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+                       <label for="lastname">Last Name</label>
+                       <div class="cols-sm-10">
+                        <div class="input-group">
+                       <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                       <input type="text" name="lastName" id="lastName" placeholder="Your Last Name" class="form-control" ng-model="vm.user.lastName" required />
+                       <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block"></span>
+                       </div>
+                   </div>
+                   </div>
+                    <div class="form-group" ng-class="{ 'has-error': form.phonenumber.$dirty && form.phonenumber.$error.required }">
+                    <label for="phonenumber" class="cols-sm-2 control-label">Mobile</label>
+                    <div class="cols-sm-10">
+                    <div class="input-group">
+                    <span class="input-group-addon"> <i class="fa fa-mobile fa" aria-hidden="true"></i></span>
+                    <input type="phoneVal"  name="phonenumber" id="phonenumber" class="form-control" placeholder="Your Mobile"/>
+                    <span ng-show="form.phonenumber.$dirty && form.phonenumber.$error.required" class="help-block"></span>
+                    </div>
+                    </div>
+                    </div>
+
+
+                   <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+                       <label for="username">Email</label>
+                       <div class="cols-sm-10">
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                       <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" ng-model="vm.user.email" required />
+                       <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block "></span>
+                       </div>
+                       </div>
+                   </div>
+                   <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                       <label for="username">Username</label>
+                       <div class="cols-sm-10">
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                       <input type="text" name="username" id="username" placeholder="Your Username" class="form-control" ng-model="vm.user.username" required />
+                       <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block"></span>
+                       </div>
+                       </div>
+                       </div>
+                   <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                       <label for="password">Password</label>
+                       <div class="cols-sm-10">
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                       <input type="password" name="password" id="password" placeholder="Your Password" class="form-control" ng-model="vm.user.password" required />
+                       <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block"></span>
+                       </div>
+                       </div>
+                   </div>
+                   <div class="form-group">
+                            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                            <div class="cols-sm-10">
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"  placeholder="Confirm your Password"/>
+                            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block"></span>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="login-register">
+                           <button type="submit" class="btn">Send</button> 
+                           Already a member? <a href="/login">Login</a> here
+                        </div>
+                    </form>
+                    </div>
+
+                    <div class="col-sm-5 contact-address wow fadeInUp">
+                        <div >
+                            <h1></h1>
+                            <img src="static/img/iphone.png">
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    
+{% endblock %}

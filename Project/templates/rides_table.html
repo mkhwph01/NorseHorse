@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<!-- Page Title -->
+<div class="page-title-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 wow fadeIn">
+                <i class="fa fa-location-arrow"></i>
+                <h1>Requests /</h1>
+                <p>View or accept a ride</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+	<table class="table table-hover table-responsive table-bordered">
+		<thead class="thead-inverse thead-default">
+			<bold>
+				<tr class="pricing-1-box pricing-1-box-best ">
+					<td><b><h4>Rider</h4></b></td>
+					<td><b><h4>Pick Up Point</h4></b></td>
+					<td><b><h4>Destination</h4></b></td>
+					<td><b><h4>Date</h4></b></td>
+					<td><b><h4>Time</h4></b></td>
+					<td><b><h4>Action</h4></b></td>
+				</tr>
+			</bold>
+		</thead>
+
+			{% for request in requests %}
+		<tbody>
+			<tr>
+				<td><span>{{ request.from_user }}</span></td>
+				<td>{{ request.pickup }}</td>
+				<td>{{ request.location }}</td>
+				<td>{{ request.ride_date }}</td>
+				<td>{{ request.time }}</td>
+				
+				<td>
+					<form method="POST" action="/accept_request/{{ request.id }}">
+						<button type="submit" class="btn btn-success">Accept</button>
+					</form>				
+				</td>
+			</tr>
+		</tbody>
+			
+
+		{% endfor %}
+	</table>
+</div>
+
+<!-- Call To Action -->
+<div class="call-to-action-container">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12 call-to-action-text wow fadeInLeftBig">
+              <p>
+                Need to go somewhere? Click to <span class="violet">request</span> a new ride. NorseHorse will connect you to an available <span class="violet">driver</span>.
+              </p>
+              <div class="call-to-action-button">
+                  <a class="big-link-3" href="/ride_request">Request Now!</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+	{% include "footer.html" %}
+
+{% endblock %}

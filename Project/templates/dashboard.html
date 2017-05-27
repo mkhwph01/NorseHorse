@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<!-- Page Title -->
+	<div class="page-title-container">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-sm-12 wow fadeIn">
+	                <i class="fa fa-location-arrow"></i>
+	                <h1>Welcome {{ current_user.name }}/</h1>
+	                <p>This is your dashboard</p>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Services -->
+    <div class="services-container">
+        <div class="container">
+            <div class="row">
+				<div class="col-sm-3">
+	                <div class="service wow fadeInDown">
+	                    <div class="service-icon"><i class="fa fa-table"></i></div>
+	                    <h3>My Bookings</h3>
+	                    <p></p>
+	                    <a class="big-link-1" href="/bookings">View</a>
+	                </div>
+                </div>
+                <div class="col-sm-3">
+	                <div class="service wow fadeInUp">
+	                    <div class="service-icon"><i class="fa fa-magic"></i></div>
+	                    <h3>Rides Offered</h3>
+	                    <p></p>
+	                    <a class="big-link-1" href="/listridesoffer">View</a>
+	                </div>
+                </div>
+                <div class="col-sm-3">
+	                <div class="service wow fadeInDown">
+	                    <div class="service-icon"><i class="fa fa-print"></i></div>
+	                    <h3>Unaccepted Rides</h3>
+	                    <p></p>
+	                    <a class="big-link-1" href="/unaccepted_rides">View</a>
+	                </div>
+                </div>
+            </div>
+            <br>
+            
+        </div>
+    </div>
+
+
+
+			
+
+
+
+	 {% include "footer.html" %}
+
+{% endblock %}   

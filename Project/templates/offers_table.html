@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+			<!-- Page Title -->
+			<div class="page-title-container">
+			    <div class="container">
+			        <div class="row">
+			            <div class="col-sm-12 wow fadeIn">
+			                <i class="fa fa-location-arrow"></i>
+			                <h1>Offers /</h1>
+			                <p>View or accept a ride offer</p>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+
+			<div class="container">
+				<h3> <br> </h3>
+				<table class="table table-hover table-responsive table-bordered">
+					<thead class="thead-inverse thead-default">
+							<tr class="pricing-1-box pricing-1-box-best ">
+								<td><b><h4>Rider</h4></b></td>
+								<td><b><h4>Pick Up Point</h4></b></td>
+								<td><b><h4>Destination</h4></b></td>
+								<td><b><h4>Date</h4></b></td>
+								<td><b><h4>Time</h4></b></td>
+								<td><b><h4>Seats</h4></b></td>
+								<td><b><h4>Action</h4></b></td>
+							</tr>
+					</thead>
+
+						{% for post in requests %}
+					<tbody>
+						<td><span>{{ post.from_user }}</span></td>
+						<td>{{ post.pickup }}</td>
+						<td>{{ post.location }}</td>
+						<td>{{ post.ride_date }}</td>
+						<td>{{ post.time }}</td>
+						<td>{{ post.num_passengers}}</td>
+							
+							<td>
+								<form method="POST" action="/accept_offer/{{ post.id }}">
+									<a href="#" onclick="$(this).closest('form').submit()" class="btn btn-success btn-sm" ><span class="glyphicon glyphicon-ok"></span> Accept</a>
+								</form>	
+							</td>
+						</tr>
+					</tbody>
+						
+
+					{% endfor %}
+				</table>
+			</div>
+
+
+	{% include "footer.html" %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+	<h3>My Ride Requests that have not been Accepted</h3>
+	<table class="table table-hover table-responsive table-bordered">
+		<thead class="thead-inverse thead-default">
+			<tr class="pricing-1-box pricing-1-box-best ">
+				<td><b><h4>Pick Up Point</h4></b></td>
+				<td><b><h4>Destination</h4></b></td>
+				<td><b><h4>Date</h4></b></td>
+				<td><b><h4>Time</h4></b></td>
+				<td colspan="2"><b><h4>Action</h4></b></td>
+			</tr>
+		</thead>
+			{% for post in requests %}
+			<tr>
+				<td>{{ post.pickup }}</td>
+				<td>{{ post.location }}</td>
+				<td>{{ post.ride_date }}</td>
+				<td>{{ post.time }}</td>
+				<td>
+					<form method="" action="/edit_offer{{ post.id }}">
+							<a href="#" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</a>	
+					</form>
+				</td>
+				<td>
+					<form method="POST" action="/delete_/{{ post.id }}">
+						<a href="#" onclick="$(this).closest('form').submit()" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+					</form>
+				</td>
+			</tr>
+
+		{%- endfor %}
+	</table>
+</div>
+
+	{% include "footer.html" %}
+{% endblock %}

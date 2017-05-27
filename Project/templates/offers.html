@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body ng-app="getLostApp" ng-cloak>
+
+        
+        <!-- Page Title -->
+        <div class="page-title-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 wow fadeIn">
+                        <i class="fa fa-location-arrow"></i>
+                        <h1>Offers /</h1>
+                        <p>Post a ride offer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="contact-us-container">
+        	<div class="container">
+	            <div class="row">
+	                <div class="col-sm-6 request-form wow fadeInLeft">
+	                    <p>
+                        NorseHorse is pleased to have you on our rideshare program. Together we can help solve Luther's transportation need. Go ahead and fill the form below to offer a ride to your destination. You can also view <a href="/view_offers">available</a> offers by other drivers.
+
+                      </p>
+
+	                    <form role="form" action="/post_offer" method="POST">
+	                    	<div class="form-group">
+                                   <label for="username">Origin</label>
+                                   <div class="cols-sm-10">
+                                    <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                   <select type="text" name="pickUp" id="pickUp" class="form-control" ng-model="" required />
+                                    <option value="" disabled selected>Select Pick Up Point</option>
+                                    <option>Minneapolis, MN</option>
+                                    <option>Chicago, IL</option>
+                                    <option>Madison, MN</option>
+                                    <option>Des Moines, IA</option>
+                                    <option>Walmart, Decorah, IA</option>
+                                   </select>
+                                </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                                   <label for="username">Destination</label>
+                                   <div class="cols-sm-10">
+                                    <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                   <select type="text" name="dropOff" id="dropOff" class="form-control" ng-model="" required />
+                                    <option value="" disabled selected>Select Drop Off Point</option>
+                                    <option>Minneapolis, MN</option>
+                                    <option>Chicago, IL</option>
+                                    <option>Madison, MN</option>
+                                    <option>Des Moines, IA</option>
+                                    <option>Walmart, Decorah, IA</option>
+                                   </select>
+                                </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="lastname">Date</label>
+                               <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        <input type="date" name="date" id="date" placeholder="" class="form-control" ng-model="info.departuredate" required />
+                                </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="lastname">Time</label>
+                               <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                        <input type="time" name="time" id="time" class="form-control" ng-model="example.value" placeholder="HH:mm:ss" required />
+                                </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                                   <label for="username">Number of Passengers</label>
+                                   <div class="cols-sm-10">
+                                    <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                   <select type="text" name="Pas" id="Pas" class="form-control" ng-model="" required />
+                                    <option value="" disabled selected>Available Seats</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                   </select>
+                                </div>
+                              </div>
+                            </div>  
+	                         
+	                        <button type="submit" class="btn">Submit</button>
+	                    </form>
+
+	                </div>
+	                <div class="col-sm-5 contact-address wow fadeInUp">
+	                    <h3>Help a friend, earn a little.</h3>
+                      <p>Need a ride dear?</p>
+	                    <img src="static/img/slider/deers.jpg">
+	     
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        <!-- Call To Action -->
+        <div class="call-to-action-container">
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-12 call-to-action-text wow fadeInLeftBig">
+                      <p>
+                        Click to view <span class="violet">available</span> ride offers posted by other drivers.
+                      </p>
+                      <div class="call-to-action-button">
+                          <a class="big-link-3" href="/view_offers">View Offers!</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <script src="static/js/app.js"></script>
+
+</body>     
+
+    {% include "footer.html" %}
+
+{% endblock %}   
